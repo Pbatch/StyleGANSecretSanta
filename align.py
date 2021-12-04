@@ -27,20 +27,18 @@ def get_landmark(path):
     img = dlib.load_rgb_image(path)
     dets = detector(img, 1)
 
-    print("Number of faces detected: {}".format(len(dets)))
-    for k, d in enumerate(dets):
-        print("Detection {}: Left: {} Top: {} Right: {} Bottom: {}".format(
-            k, d.left(), d.top(), d.right(), d.bottom()))
-        # Get the landmarks/parts for the face in box d.
-        shape = predictor(img, d)
-        print("Part 0: {}, Part 1: {} ...".format(shape.part(0), shape.part(1)))
+    if len(dets) == 0:
+        err = f'{len(dets)} faces detected in the image but only one is allowed. '
+        err += 'Please try again with a different image'
+        raise ValueError(err)
 
+    shape = predictor(img, dets[0])
     t = list(shape.parts())
     a = []
     for tt in t:
         a.append([tt.x, tt.y])
     lm = np.array(a)
-    # lm is a shape=(68,2) np.array
+
     return lm
 
 
