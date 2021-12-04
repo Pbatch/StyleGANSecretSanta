@@ -14,10 +14,8 @@ import argparse
 
 def load_predictor():
     if not os.path.exists('shape_predictor_68_face_landmarks.dat'):
-        subprocess.call(['wget', 'http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2'],
-                        shell=True)
-        subprocess.call(['bzip2',  '-dv', 'shape_predictor_68_face_landmarks.dat.bz2'],
-                        shell=True)
+        subprocess.call(['wget', 'http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2'])
+        subprocess.call(['bzip2',  '-dv', 'shape_predictor_68_face_landmarks.dat.bz2'])
     predictor = dlib.shape_predictor('./shape_predictor_68_face_landmarks.dat')
     return predictor
 
