@@ -118,7 +118,8 @@ def align_face(path):
         img = img.resize((output_size, output_size), Image.ANTIALIAS)
 
     basename = os.path.basename(path).split('.')[0]
-    img.save(f'aligned_images/{basename}.jpg')
+    save_path = os.path.join('aligned_images', f'{basename}.png')
+    img.save(save_path)
 
 
 if __name__ == '__main__':
