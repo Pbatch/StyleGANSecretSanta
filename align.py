@@ -43,7 +43,6 @@ def get_landmark(path):
 
 
 def align_face(path):
-    os.makedirs('aligned_images', exist_ok=True)
     lm = get_landmark(path)
 
     lm_eye_left = lm[36: 42]  # left-clockwise
@@ -117,8 +116,9 @@ def align_face(path):
     if output_size < transform_size:
         img = img.resize((output_size, output_size), Image.ANTIALIAS)
 
+    os.makedirs('alignments', exist_ok=True)
     basename = os.path.basename(path).split('.')[0]
-    save_path = os.path.join('aligned_images', f'{basename}.png')
+    save_path = os.path.join('alignments', f'{basename}.png')
     img.save(save_path)
 
 
