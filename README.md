@@ -17,7 +17,7 @@ For a full tutorial see the Colab notebook. (https://colab.research.google.com/d
 
 ### Examples
 
-##### Buddy + Kevin
+##### Kevin + Santa
 
 ![kevin_santa.png](README_images/kevin_santa.png)
 
